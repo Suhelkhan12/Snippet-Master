@@ -38,7 +38,7 @@ export default function Select<T extends GradientBackground | LanguageName>({
       <div className="relative">
         <ListboxButton
           className={cn(
-            "flex select-none items-center justify-between gap-3 rounded-lg p-2 text-xs",
+            "flex select-none items-center justify-between gap-3 rounded-lg p-2 text-xs p-",
             "border-[1px] border-white/30 bg-foreground",
             "transition-colors duration-300 ease-in-out",
             "hover:cursor-pointer hover:bg-muted-foreground focus:outline-none"

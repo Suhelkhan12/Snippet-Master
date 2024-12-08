@@ -5,14 +5,17 @@ export default interface CodeProps {
   initialValue?: string;
 }
 
-export type Choice = {
+export type ChoiceDefinition = {
+  id: string;
   label: string;
   class: string;
 };
 
-export type GradientBackground = {
-  name: string;
+export type ThemeDefinition = {
+  id: string;
+  label: string;
   class: string;
+  generatedColors: string[];
 };
 
 export type LanguageDefinition = {

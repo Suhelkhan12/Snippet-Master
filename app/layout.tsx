@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { SettingsProvider } from "@/context/SettingsContext";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,7 +30,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <main className="h-screen bg-foreground flex items-center justify-center flex-col gap-6">
-          {children}
+          <SettingsProvider>{children}</SettingsProvider>
         </main>
       </body>
     </html>

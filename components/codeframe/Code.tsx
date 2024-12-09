@@ -15,7 +15,7 @@ const Code = () => {
   const [selectedLanguages, setSelectedLanguages] = useState<any>(null);
   const [code, setCode] = useState<string>("interface Props{item1:'test1'}");
 
-  const { language, theme, padding, lineNumbers } = useSettingsContext();
+  const { language, theme, lineNumbers } = useSettingsContext();
 
   const handleOnChange = useCallback((value: string) => {
     setCode(value);
@@ -177,7 +177,7 @@ const Code = () => {
     >
       <motion.div
         layout
-        className="relative z-[1] h-full w-full min-w-[480px] max-w-2xl rounded-xl"
+        className="relative z-[1] h-full w-full min-w-[480px] max-w-2xl rounded-xl "
       >
         <div
           className={cn(
@@ -194,8 +194,7 @@ const Code = () => {
         </div>
         <div
           className={cn(
-            "relative z-[4] rounded-xl bg-black/70 p- ",
-            padding.class
+            "relative z-[4] rounded-xl bg-black/70 p-4 shadow-xl border border-white/10"
           )}
         >
           {selectedLanguages && (

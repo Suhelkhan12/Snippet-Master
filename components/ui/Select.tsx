@@ -6,23 +6,13 @@ import {
   ListboxOption,
   ListboxOptions,
 } from "@headlessui/react";
-import clsx from "clsx";
 import { ChevronDownIcon } from "lucide-react";
-import { Fragment } from "react";
 
 interface SelectProps<T> {
   type: "language" | "theme";
   initialValue: T;
   setValue: (_: T) => void;
   options: T[];
-}
-
-function ThemeBubble({ color }: { color: string }) {
-  return (
-    <span
-      className={cn("block h-4 rounded-full bg-gradient-to-br", color)}
-    ></span>
-  );
 }
 
 export default function Select<T extends ThemeDefinition | LanguageDefinition>({
@@ -39,13 +29,9 @@ export default function Select<T extends ThemeDefinition | LanguageDefinition>({
           "focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25"
         )}
       >
-        {type === "language" ? (
-          <span className=" capitalize">
-            {(initialValue as LanguageDefinition).label}
-          </span>
-        ) : (
-          <ThemeBubble color={(initialValue as ThemeDefinition).class} />
-        )}
+        <span className=" capitalize">
+          {(initialValue as LanguageDefinition).label}
+        </span>
         <ChevronDownIcon
           className="group pointer-events-none absolute top-2.5 right-2.5 size-4 fill-white/60"
           aria-hidden="true"
@@ -55,7 +41,7 @@ export default function Select<T extends ThemeDefinition | LanguageDefinition>({
         anchor="bottom"
         transition
         className={cn(
-          " rounded-md border border-white/5 bg-white p-1 focus:outline-none",
+          "w-40 rounded-md border border-white/5 bg-white p-1 focus:outline-none",
           "transition duration-100 ease-in data-[leave]:data-[closed]:opacity-0"
         )}
       >
@@ -64,24 +50,15 @@ export default function Select<T extends ThemeDefinition | LanguageDefinition>({
             key={`${type}-${i}`}
             value={option}
             className={cn(
-              "flex items-center gap-3 rounded-lg p-2 text-xs",
+              "flex items-center rounded-sm p-2 text-xs",
               "cursor-pointer select-none bg-white",
               "transition-colors duration-200 ease-in-out",
               "hover:bg-black hover:text-white"
             )}
           >
-            {type === "language" ? (
-              <span className="block truncate pr-6 capitalize">
-                {(option as LanguageDefinition).label}
-              </span>
-            ) : (
-              <>
-                <ThemeBubble color={(option as ThemeDefinition).class} />
-                <span className="block truncate pr-9">
-                  {(option as ThemeDefinition).label}
-                </span>
-              </>
-            )}
+            <span className="block capitalize">
+              {(option as LanguageDefinition).label}
+            </span>
           </ListboxOption>
         ))}
       </ListboxOptions>

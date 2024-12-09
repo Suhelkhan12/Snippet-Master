@@ -110,9 +110,9 @@ const Settings = () => {
       dragConstraints={constraints}
       animate={animationControls}
       className={cn(
-        "fixed bottom-32 x-10 rounded-xl p-5 text-xm",
+        "fixed bottom-4  x-10 rounded-xl p-5 text-xm",
         "transition-opacity duration-300 ease-in-out will-change-transform",
-        "border-[1px] border-white/20 text-white/70 bg-black opacity-50 shadow-xl",
+        "border-[1px] border-white/20 text-white bg-black opacity-80 shadow-xl",
         "focus-within:opacity-100 hover:opacity-100"
       )}
     >
@@ -122,13 +122,13 @@ const Settings = () => {
           "absolute -top-[10px] left-1/2 py-[1px] px-[6px]",
           "rounded-md border-[1px] border-white/20 bg-black",
           "transition-all duration-200 ease-in-out will-change-transform",
-          "hover:scale-150 hover:cursor-grab hover:bg-gray-800 focus:outline-none"
+          "hover:scale-125 hover:cursor-grab hover:bg-white hover:text-black focus:outline-none"
         )}
       >
         <MdDragIndicator />
       </div>
       <div className="flex gap-8">
-        <div>
+        <div className="flex flex-col gap-2">
           <label htmlFor="language">Language</label>
           <Select
             type="language"
@@ -137,7 +137,7 @@ const Settings = () => {
             options={SUPPORTED_LANGUAGES}
           />
         </div>
-        <div>
+        <div className="flex flex-col gap-2">
           <label htmlFor="theme">Theme</label>
           <Select
             type="theme"
@@ -146,11 +146,11 @@ const Settings = () => {
             options={SUPPORTED_THEMES}
           />
         </div>
-        <div>
+        <div className="flex flex-col gap-2">
           <label htmlFor="line-numbers">Line numbers</label>
           <Toggle initialValue={lineNumbers} setValue={setLineNumbers} />
         </div>
-        <div>
+        <div className="flex flex-col gap-2">
           <label htmlFor="padding">Padding</label>
           <Choices
             initialValue={padding}

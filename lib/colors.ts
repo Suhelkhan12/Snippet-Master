@@ -163,12 +163,21 @@ function modifyColors(
     const saturationValue = saturationValues[i];
     const lightnessValue = lightnessValues[i];
 
-    const currentHue = hslColor.match(/hsl\((\d+), (\d+)%, (\d+)%\)/)![1];
+    // Use regex with optional whitespace trimming and validate the match
+    const match = hslColor.match(
+      /hsl\(\s*(\d+)\s*,\s*(\d+)%\s*,\s*(\d+)%\s*\)/
+    );
 
-    const modifiedHslColor = `hsl(${currentHue}, ${saturationValue}, ${lightnessValue})`;
+    if (match) {
+      const currentHue = match[1]; // Extract the hue value
+      const modifiedHslColor = `hsl(${currentHue}, ${saturationValue}%, ${lightnessValue}%)`;
 
-    modifiedHslColors.push(modifiedHslColor);
+      modifiedHslColors.push(modifiedHslColor);
+    } else {
+      console.error(`Invalid HSL format: ${hslColor}`);
+    }
   }
+
   return modifiedHslColors;
 }
 
@@ -320,7 +329,7 @@ export function generateColors(colors: string[]): string[] {
   });
 
   const hslColors = convertToHsl([color3, color4, color5, color6, color7]);
-
+  console.log({ hsl: hslColors });
   const adjustedColor = modifyColors(
     hslColors,
     [100, 93, 98, 100, 91],

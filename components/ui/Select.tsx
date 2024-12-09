@@ -1,13 +1,11 @@
-import { GradientBackground } from "@/lib/types";
+import { LanguageDefinition, ThemeDefinition } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import {
   Listbox,
   ListboxButton,
   ListboxOption,
   ListboxOptions,
-  Transition,
 } from "@headlessui/react";
-import type { LanguageName } from "@uiw/codemirror-extensions-langs";
 import clsx from "clsx";
 import { ChevronDownIcon } from "lucide-react";
 import { Fragment } from "react";
@@ -27,7 +25,7 @@ function ThemeBubble({ color }: { color: string }) {
   );
 }
 
-export default function Select<T extends GradientBackground | LanguageName>({
+export default function Select<T extends ThemeDefinition | LanguageDefinition>({
   type,
   initialValue,
   setValue,
@@ -35,70 +33,58 @@ export default function Select<T extends GradientBackground | LanguageName>({
 }: SelectProps<T>) {
   return (
     <Listbox value={initialValue} onChange={setValue}>
-      <div className="relative">
-        <ListboxButton
-          className={cn(
-            "flex select-none items-center justify-between gap-3 rounded-lg p-2 text-xs p-",
-            "border-[1px] border-white/30 bg-foreground",
-            "transition-colors duration-300 ease-in-out",
-            "hover:cursor-pointer hover:bg-muted-foreground focus:outline-none"
-          )}
-        >
-          {type === "language" ? (
-            <span>{initialValue as LanguageName}</span>
-          ) : (
-            <ThemeBubble color={(initialValue as GradientBackground).class} />
-          )}
-          <ChevronDownIcon
-            className="group pointer-events-none absolute top-2.5 right-2.5 size-4 fill-white/60"
-            aria-hidden="true"
-          />
-          <Transition
-            as={Fragment}
-            enter="transition-all transform ease-in-out duration-200"
-            enterFrom="opacity-0 scale-90"
-            enterTo="opacity-100"
-            leave="transition-all transform ease-in-out duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0 scale-90"
+      <ListboxButton
+        className={cn(
+          "relative block min-w-28 w-full rounded-lg bg-white/5 py-1.5 pr-8 pl-3 text-left text-sm/6 text-white",
+          "focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25"
+        )}
+      >
+        {type === "language" ? (
+          <span className=" capitalize">
+            {(initialValue as LanguageDefinition).label}
+          </span>
+        ) : (
+          <ThemeBubble color={(initialValue as ThemeDefinition).class} />
+        )}
+        <ChevronDownIcon
+          className="group pointer-events-none absolute top-2.5 right-2.5 size-4 fill-white/60"
+          aria-hidden="true"
+        />
+      </ListboxButton>
+      <ListboxOptions
+        anchor="bottom"
+        transition
+        className={cn(
+          " rounded-md border border-white/5 bg-white p-1 focus:outline-none",
+          "transition duration-100 ease-in data-[leave]:data-[closed]:opacity-0"
+        )}
+      >
+        {options.map((option, i) => (
+          <ListboxOption
+            key={`${type}-${i}`}
+            value={option}
+            className={cn(
+              "flex items-center gap-3 rounded-lg p-2 text-xs",
+              "cursor-pointer select-none bg-white",
+              "transition-colors duration-200 ease-in-out",
+              "hover:bg-black hover:text-white"
+            )}
           >
-            <ListboxOptions
-              className={clsx(
-                "absolute z-10 max-h-80 -translate-x-1/4 -translate-y-3/4 space-y-1 overflow-auto rounded-xl p-2",
-                "border-[1px] border-white/20 bg-black",
-                "focus:outline-none"
-              )}
-            >
-              {options.map((option, i) => (
-                <ListboxOption
-                  key={`${type}-${i}`}
-                  value={option}
-                  className={clsx(
-                    "flex items-center gap-3 rounded-lg p-2 text-xs",
-                    "cursor-pointer select-none",
-                    "transition-colors duration-200 ease-in-out"
-                  )}
-                >
-                  {type === "language" ? (
-                    <span className="block truncate pr-9">
-                      {option as LanguageName}
-                    </span>
-                  ) : (
-                    <>
-                      <ThemeBubble
-                        color={(option as GradientBackground).class}
-                      />
-                      <span className="block truncate pr-9">
-                        {(option as GradientBackground).name}
-                      </span>
-                    </>
-                  )}
-                </ListboxOption>
-              ))}
-            </ListboxOptions>
-          </Transition>
-        </ListboxButton>
-      </div>
+            {type === "language" ? (
+              <span className="block truncate pr-6 capitalize">
+                {(option as LanguageDefinition).label}
+              </span>
+            ) : (
+              <>
+                <ThemeBubble color={(option as ThemeDefinition).class} />
+                <span className="block truncate pr-9">
+                  {(option as ThemeDefinition).label}
+                </span>
+              </>
+            )}
+          </ListboxOption>
+        ))}
+      </ListboxOptions>
     </Listbox>
   );
 }

@@ -29,7 +29,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <main className="h-screen bg-foreground flex items-center justify-center flex-col gap-6">
+        <main
+          id="main"
+          className="h-screen bg-foreground flex items-center justify-center flex-col gap-6"
+        >
           <SettingsProvider>{children}</SettingsProvider>
         </main>
       </body>

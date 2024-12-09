@@ -1,6 +1,5 @@
 import { memo } from "react";
 import { Switch } from "@headlessui/react";
-import { cn } from "@/lib/utils";
 
 interface ToggleProps {
   initialValue: boolean;
@@ -13,22 +12,26 @@ export default memo(function Toggle({ initialValue, setValue }: ToggleProps) {
       <Switch
         checked={initialValue}
         onChange={setValue}
-        className={cn(
-          "flex h-5 w-9 cursor-pointer rounded-full p-1",
-          "transition-colors duration-200 ease-in-out",
-          "focus:outline-none",
-          "ui-checked:bg-blue-600 ui-not-checked:bg-gray-200"
-        )}
+        className="group relative flex h-7 w-14 cursor-pointer rounded-full bg-white/10 p-1 transition-colors duration-200 ease-in-out focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-white/50"
       >
         <span
-          className={cn(
-            "pointer-events-none h-full w-3 translate-y-0 rounded-full",
-            "bg-white",
-            "transform transition-transform duration-200 ease-in-out will-change-transform",
-            "ui-checked:translate-x-4"
-          )}
+          aria-hidden="true"
+          className="pointer-events-none inline-block size-5 translate-x-0 rounded-full bg-white ring-0 shadow-lg transition duration-200 ease-in-out group-data-[checked]:translate-x-7"
         />
       </Switch>
     </div>
   );
 });
+
+/**
+ * <Switch
+      checked={initialValue}
+      onChange={setValue}
+      className="group relative flex h-7 w-14 cursor-pointer rounded-full bg-white/10 p-1 transition-colors duration-200 ease-in-out focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-white/10"
+    >
+      <span
+        aria-hidden="true"
+        className="pointer-events-none inline-block size-5 translate-x-0 rounded-full bg-white ring-0 shadow-lg transition duration-200 ease-in-out group-data-[checked]:translate-x-7"
+      />
+    </Switch>
+ */

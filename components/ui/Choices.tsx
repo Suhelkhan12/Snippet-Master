@@ -19,7 +19,7 @@ const Choices = ({ choices, initialValue, setValue }: ChoicesProps) => {
             >
               <span className="invisible size-2 rounded-full bg-white group-data-[checked]:visible transition-colors duration-300 ease-in-out" />
             </Radio>
-            <Label>{choice.label}</Label>
+            <Label className=" capitalize">{choice.label}</Label>
           </Field>
         ))}
       </div>

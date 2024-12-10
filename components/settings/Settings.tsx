@@ -7,8 +7,9 @@ import { motion, useAnimationControls, useDragControls } from "motion/react";
 import { MdDragIndicator } from "react-icons/md";
 import Select from "../ui/Select";
 import { SUPPORTED_LANGUAGES } from "@/lib/languages";
-import { SUPPORTED_THEMES } from "@/lib/themes";
+import { SUPPORTED_PADDINGS, SUPPORTED_THEMES } from "@/lib/themes";
 import Toggle from "../ui/Toggle";
+import Choices from "../ui/Choices";
 
 const Settings = () => {
   // for changing the dimensions for the settings bar
@@ -31,6 +32,8 @@ const Settings = () => {
     setTheme,
     language,
     setLanguage,
+    padding,
+    setPadding,
     lineNumbers,
     setLineNumbers,
   } = useSettingsContext();
@@ -107,7 +110,7 @@ const Settings = () => {
       dragConstraints={constraints}
       animate={animationControls}
       className={cn(
-        "fixed bottom-10 max-w-2xl w-full  x-10 rounded-xl p-5 text-xm",
+        "fixed bottom-10 max-w-3xl  w-full x-10 rounded-xl p-8 text-xm",
         "transition-opacity duration-300 ease-in-out will-change-transform",
         "border-[1px] border-white/20 text-white bg-black opacity-50 shadow-xl",
         "focus-within:opacity-100 hover:opacity-100"
@@ -124,7 +127,7 @@ const Settings = () => {
       >
         <MdDragIndicator />
       </div>
-      <div className="w-full grid grid-cols-3 gap-4 items-center justify-center">
+      <div className="w-full flex items-start justify-between">
         <div className="flex flex-col gap-2">
           <label htmlFor="language">Language</label>
           <Select
@@ -146,6 +149,15 @@ const Settings = () => {
         <div className="flex flex-col gap-2">
           <label htmlFor="line-numbers">Line numbers</label>
           <Toggle initialValue={lineNumbers} setValue={setLineNumbers} />
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <label htmlFor="line-numbers">Paddings</label>
+          <Choices
+            initialValue={padding}
+            setValue={setPadding}
+            choices={SUPPORTED_PADDINGS}
+          />
         </div>
       </div>
     </motion.div>

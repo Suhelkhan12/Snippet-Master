@@ -18,7 +18,7 @@ interface SelectProps<T> {
 const ThemeBubble = ({ color }: { color: string }) => {
   return (
     <span
-      className={cn("block h-4 w-4 rounded-full bg-gradient-to-br", color)}
+      className={cn("block size-5 rounded-full bg-gradient-to-br", color)}
     />
   );
 };
@@ -58,8 +58,9 @@ export default function Select<T extends ThemeDefinition | LanguageDefinition>({
         anchor="bottom"
         transition
         className={cn(
-          "w-40 rounded-md border border-white/5 bg-white p-1 focus:outline-none",
-          "transition duration-100 ease-in data-[leave]:data-[closed]:opacity-0"
+          " w-[20rem] rounded-md border border-white/20 bg-black p-2 focus:outline-none grid grid-cols-2 gap-2 shadow-md ",
+          "transition duration-100 ease-in data-[leave]:data-[closed]:opacity-0",
+          "scrollbar-thin scrollbar-track-transparent"
         )}
       >
         {options.map((option, i) => (
@@ -67,10 +68,10 @@ export default function Select<T extends ThemeDefinition | LanguageDefinition>({
             key={`${type}-${i}`}
             value={option}
             className={cn(
-              "flex items-center rounded-sm p-2 text-xs",
-              "cursor-pointer select-none bg-white",
+              "flex items-center rounded-sm p-2 text-base",
+              "cursor-pointer select-none text-white",
               "transition-colors duration-200 ease-in-out",
-              "hover:bg-black hover:text-white"
+              "hover:bg-white/10 hover:text-white"
             )}
           >
             {type === "language" ? (

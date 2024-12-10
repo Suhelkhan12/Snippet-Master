@@ -13,9 +13,11 @@ const Code = () => {
   // state value for textarea
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [selectedLanguages, setSelectedLanguages] = useState<any>(null);
-  const [code, setCode] = useState<string>("interface Props{item1:'test1'}");
+  const [code, setCode] = useState<string>(`interface Props{
+      item1: 'item2';
+}`);
 
-  const { language, theme, lineNumbers } = useSettingsContext();
+  const { language, theme, padding, lineNumbers } = useSettingsContext();
 
   const handleOnChange = useCallback((value: string) => {
     setCode(value);
@@ -170,7 +172,8 @@ const Code = () => {
     <motion.div
       layout
       className={cn(
-        "relative z-0 w-auto min-w-[512px] max-w-5xl rounded-xl overflow-hidden",
+        "relative z-0 w-auto min-w-[512px] max-w-5xl p-",
+        padding.class,
         "bg-gradient-to-br",
         theme.class,
         "transition-all duration-200 ease-in-out"

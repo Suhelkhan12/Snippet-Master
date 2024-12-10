@@ -1,5 +1,5 @@
 import { generateColors } from "./colors";
-import { ThemeDefinition } from "./types";
+import { ChoiceDefinition, ThemeDefinition } from "./types";
 
 export const SUPPORTED_THEMES: ThemeDefinition[] = [
   {
@@ -121,5 +121,23 @@ export const SUPPORTED_THEMES: ThemeDefinition[] = [
     label: "Charcoal",
     class: "from-gray-700 to-gray-900",
     generatedColors: generateColors(["#374151", "#111827"]),
+  },
+];
+
+export const SUPPORTED_PADDINGS: ChoiceDefinition[] = [
+  {
+    id: "small",
+    label: "small",
+    class: "p-8",
+  },
+  {
+    id: "medium",
+    label: "medium",
+    class: "p-10",
+  },
+  {
+    id: "large",
+    label: "large",
+    class: "p-20",
   },
 ];

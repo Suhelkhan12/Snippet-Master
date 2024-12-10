@@ -1,8 +1,12 @@
 "use client";
 import { createContext, useContext, useState } from "react";
-import { LanguageDefinition, ThemeDefinition } from "@/lib/types";
+import {
+  ChoiceDefinition,
+  LanguageDefinition,
+  ThemeDefinition,
+} from "@/lib/types";
 import { SUPPORTED_LANGUAGES } from "@/lib/languages";
-import { SUPPORTED_THEMES } from "@/lib/themes";
+import { SUPPORTED_THEMES, SUPPORTED_PADDINGS } from "@/lib/themes";
 
 /**
  * this is props interface for settings context
@@ -12,6 +16,8 @@ interface SettingsContextProps {
   setLanguage: (_: LanguageDefinition) => void;
   theme: ThemeDefinition;
   setTheme: (_: ThemeDefinition) => void;
+  padding: ChoiceDefinition;
+  setPadding: (_: ChoiceDefinition) => void;
   lineNumbers: boolean;
   setLineNumbers: (_: boolean) => void;
 }
@@ -34,6 +40,9 @@ const SettingsProvider = ({ children }: SettingsProviderProps) => {
     SUPPORTED_LANGUAGES[0]
   );
   const [theme, setTheme] = useState<ThemeDefinition>(SUPPORTED_THEMES[0]);
+  const [padding, setPadding] = useState<ChoiceDefinition>(
+    SUPPORTED_PADDINGS[0]
+  );
   const [lineNumbers, setLineNumbers] = useState<boolean>(true);
 
   return (
@@ -43,6 +52,8 @@ const SettingsProvider = ({ children }: SettingsProviderProps) => {
         setLanguage,
         theme,
         setTheme,
+        padding,
+        setPadding,
         lineNumbers,
         setLineNumbers,
       }}

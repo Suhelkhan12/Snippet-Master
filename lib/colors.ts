@@ -329,7 +329,6 @@ export function generateColors(colors: string[]): string[] {
   });
 
   const hslColors = convertToHsl([color3, color4, color5, color6, color7]);
-  console.log({ hsl: hslColors });
   const adjustedColor = modifyColors(
     hslColors,
     [100, 93, 98, 100, 91],

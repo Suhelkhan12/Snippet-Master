@@ -170,31 +170,33 @@ const Code = () => {
     <motion.div
       layout
       className={cn(
-        "relative z-0 w-auto min-w-[512px] max-w-5xl",
+        "relative z-0 w-auto min-w-[512px] max-w-5xl rounded-xl overflow-hidden",
         "bg-gradient-to-br",
+        theme.class,
         "transition-all duration-200 ease-in-out"
       )}
     >
       <motion.div
         layout
-        className="relative z-[1] h-full w-full min-w-[480px] max-w-2xl rounded-xl "
+        className="relative z-[1] h-full w-full min-w-[480px] max-w-2xl rounded-xl overflow-hidden "
       >
         <div
           className={cn(
-            "absolute inset-0 rounded-xl",
+            "absolute inset-0 rounded-xl overflow-hidden",
             "after:absolute after:inset-0 after:z-[2] after:translate-y-6 after:rounded-xl after:bg-black/60 after:blur-xl"
           )}
         >
           <div
             className={cn(
               "absolute inset-0 z-[3] rounded-xl",
-              "bg-gradient-to-br"
+              "bg-gradient-to-br",
+              theme.class
             )}
           />
         </div>
         <div
           className={cn(
-            "relative z-[4] rounded-xl bg-black/70 p-4 shadow-xl border border-white/10"
+            "relative z-[4] rounded-xl overflow-hidden bg-black/70 p-4 shadow-xl border border-white/10"
           )}
         >
           {selectedLanguages && (

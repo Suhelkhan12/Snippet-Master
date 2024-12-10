@@ -107,9 +107,9 @@ const Settings = () => {
       dragConstraints={constraints}
       animate={animationControls}
       className={cn(
-        "fixed bottom-4 max-w-2xl w-full  x-10 rounded-xl p-5 text-xm",
+        "fixed bottom-10 max-w-2xl w-full  x-10 rounded-xl p-5 text-xm",
         "transition-opacity duration-300 ease-in-out will-change-transform",
-        "border-[1px] border-white/20 text-white bg-black opacity-80 shadow-xl",
+        "border-[1px] border-white/20 text-white bg-black opacity-50 shadow-xl",
         "focus-within:opacity-100 hover:opacity-100"
       )}
     >

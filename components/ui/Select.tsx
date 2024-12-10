@@ -15,6 +15,14 @@ interface SelectProps<T> {
   options: T[];
 }
 
+const ThemeBubble = ({ color }: { color: string }) => {
+  return (
+    <span
+      className={cn("block h-4 w-4 rounded-full bg-gradient-to-br", color)}
+    />
+  );
+};
+
 export default function Select<T extends ThemeDefinition | LanguageDefinition>({
   type,
   initialValue,
@@ -29,9 +37,18 @@ export default function Select<T extends ThemeDefinition | LanguageDefinition>({
           "focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25"
         )}
       >
-        <span className=" capitalize">
-          {(initialValue as LanguageDefinition).label}
-        </span>
+        {type === "language" ? (
+          <span className=" capitalize">
+            {(initialValue as LanguageDefinition).label}
+          </span>
+        ) : (
+          <span className="flex items-center gap-2 ">
+            <ThemeBubble color={(initialValue as ThemeDefinition).class} />
+            <span className=" capitalize">
+              {(initialValue as LanguageDefinition).label}
+            </span>
+          </span>
+        )}
         <ChevronDownIcon
           className="group pointer-events-none absolute top-2.5 right-2.5 size-4 fill-white/60"
           aria-hidden="true"
@@ -56,9 +73,18 @@ export default function Select<T extends ThemeDefinition | LanguageDefinition>({
               "hover:bg-black hover:text-white"
             )}
           >
-            <span className="block capitalize">
-              {(option as LanguageDefinition).label}
-            </span>
+            {type === "language" ? (
+              <span className="block capitalize">
+                {(option as LanguageDefinition).label}
+              </span>
+            ) : (
+              <div className="flex items-center gap-2">
+                <ThemeBubble color={(option as ThemeDefinition).class} />
+                <span className="block capitalize">
+                  {(option as ThemeDefinition).label}
+                </span>
+              </div>
+            )}
           </ListboxOption>
         ))}
       </ListboxOptions>

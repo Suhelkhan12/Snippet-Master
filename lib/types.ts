@@ -1,4 +1,5 @@
 import { Extension } from "@codemirror/state";
+import { IconType } from "react-icons/lib";
 
 export default interface CodeProps {
   placeholder: string;
@@ -21,5 +22,6 @@ export type ThemeDefinition = {
 export type LanguageDefinition = {
   id: string;
   label: string;
+  icon: IconType;
   extension: () => Promise<Extension>;
 };

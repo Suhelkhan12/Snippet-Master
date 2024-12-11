@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { fontFamily } from "tailwindcss/defaultTheme";
 
 export default {
   darkMode: ["class"],
@@ -58,6 +59,14 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+    },
+    fontFamily: {
+      mono: ["var(--font-poppins)", ...fontFamily.mono],
+      lato: ["var(--font-lato)", ...fontFamily.sans],
+      nunito: ["var(--font-nunito)", ...fontFamily.serif],
+      cousine: ["var(--font-cousine)", ...fontFamily.mono],
+      spaceMono: ["var(--font-space-mono)", ...fontFamily.mono],
+      oxygenMono: ["var(--font-oxygen-mono)", ...fontFamily.mono],
     },
   },
   // eslint-disable-next-line @typescript-eslint/no-require-imports

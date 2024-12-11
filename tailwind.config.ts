@@ -68,6 +68,10 @@ export default {
       spaceMono: ["var(--font-space-mono)", ...fontFamily.mono],
       oxygenMono: ["var(--font-oxygen-mono)", ...fontFamily.mono],
     },
+    boxShadow: {
+      colorful:
+        "0 10px 300px rgba(255, 0, 0, 0.5), 0 10px 200px rgba(0, 255, 0, 0.5), 0 10px 100px rgba(0, 0, 255, 0.5)",
+    },
   },
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   plugins: [require("tailwindcss-animate"), require("tailwind-scrollbar")],

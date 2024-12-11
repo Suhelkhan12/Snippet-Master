@@ -10,6 +10,7 @@ import { SUPPORTED_LANGUAGES } from "@/lib/languages";
 import { SUPPORTED_PADDINGS, SUPPORTED_THEMES } from "@/lib/themes";
 import Toggle from "../ui/Toggle";
 import Choices from "../ui/Choices";
+import { SUPPORTED_FONTS } from "@/lib/fonts";
 
 const Settings = () => {
   // for changing the dimensions for the settings bar
@@ -34,6 +35,8 @@ const Settings = () => {
     setLanguage,
     padding,
     setPadding,
+    font,
+    setFont,
     lineNumbers,
     setLineNumbers,
   } = useSettingsContext();
@@ -110,7 +113,7 @@ const Settings = () => {
       dragConstraints={constraints}
       animate={animationControls}
       className={cn(
-        "fixed bottom-10 max-w-3xl  w-full x-10 rounded-xl p-8 text-xm",
+        "fixed bottom-10 max-w-4xl  w-full x-10 rounded-xl p-8 text-xm",
         "transition-opacity duration-300 ease-in-out will-change-transform",
         "border-[1px] border-white/20 text-white bg-black opacity-50 shadow-xl",
         "focus-within:opacity-100 hover:opacity-100"
@@ -144,6 +147,15 @@ const Settings = () => {
             initialValue={theme}
             setValue={setTheme}
             options={SUPPORTED_THEMES}
+          />
+        </div>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="theme">Font</label>
+          <Select
+            type="font"
+            initialValue={font}
+            setValue={setFont}
+            options={SUPPORTED_FONTS}
           />
         </div>
         <div className="flex flex-col gap-2">

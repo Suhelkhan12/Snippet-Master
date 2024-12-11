@@ -5,7 +5,6 @@ import {
   Nunito,
   Oxygen_Mono,
   Space_Mono,
-  Poppins,
 } from "next/font/google";
 import "./globals.css";
 import { SettingsProvider } from "@/context/SettingsContext";
@@ -41,11 +40,6 @@ export const metadata: Metadata = {
     "code snippet generation, coding efficiency, code management, snippet organizer, developer tools, code snippet library",
 };
 
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-poppins",
-});
 const lato = Lato({
   subsets: ["latin"],
   weight: ["400"],
@@ -83,7 +77,6 @@ export default function RootLayout({
           id="main"
           className={cn(
             "h-screen bg-foreground flex items-center justify-center flex-col gap-6",
-            poppins.variable,
             lato.variable,
             nunito.variable,
             cousine.variable,

@@ -2,12 +2,13 @@
 import { createContext, useContext, useState } from "react";
 import {
   ChoiceDefinition,
+  FontsDefinition,
   LanguageDefinition,
   ThemeDefinition,
 } from "@/lib/types";
 import { SUPPORTED_LANGUAGES } from "@/lib/languages";
 import { SUPPORTED_THEMES, SUPPORTED_PADDINGS } from "@/lib/themes";
-
+import { SUPPORTED_FONTS } from "@/lib/fonts";
 /**
  * this is props interface for settings context
  */
@@ -18,6 +19,8 @@ interface SettingsContextProps {
   setTheme: (_: ThemeDefinition) => void;
   padding: ChoiceDefinition;
   setPadding: (_: ChoiceDefinition) => void;
+  font: FontsDefinition;
+  setFont: (_: FontsDefinition) => void;
   lineNumbers: boolean;
   setLineNumbers: (_: boolean) => void;
 }
@@ -43,6 +46,7 @@ const SettingsProvider = ({ children }: SettingsProviderProps) => {
   const [padding, setPadding] = useState<ChoiceDefinition>(
     SUPPORTED_PADDINGS[0]
   );
+  const [font, setFont] = useState<FontsDefinition>(SUPPORTED_FONTS[0]);
   const [lineNumbers, setLineNumbers] = useState<boolean>(true);
 
   return (
@@ -54,6 +58,8 @@ const SettingsProvider = ({ children }: SettingsProviderProps) => {
         setTheme,
         padding,
         setPadding,
+        font,
+        setFont,
         lineNumbers,
         setLineNumbers,
       }}

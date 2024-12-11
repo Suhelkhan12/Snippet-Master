@@ -17,7 +17,7 @@ const Code = () => {
       item1: 'item2';
 }`);
 
-  const { language, theme, padding, lineNumbers } = useSettingsContext();
+  const { language, theme, padding, font, lineNumbers } = useSettingsContext();
 
   const handleOnChange = useCallback((value: string) => {
     setCode(value);
@@ -52,6 +52,17 @@ const Code = () => {
     },
   });
 
+  // for changing font
+  const fontStyle = EditorView.theme({
+    ".cm-content *": {
+      fontFamily: font.value,
+      fontVarriantLigatures: "normal",
+    },
+    ".cm-gutters": {
+      fontFamily: font.value,
+      fontVarriantLigatures: "normal",
+    },
+  });
   const colors = theme.generatedColors;
 
   // creating own theme
@@ -176,7 +187,9 @@ const Code = () => {
         padding.class,
         "bg-gradient-to-br",
         theme.class,
-        "transition-all duration-200 ease-in-out"
+        font.value,
+        "transition-all duration-200 ease-in-out",
+        "shadow-colorful"
       )}
     >
       <motion.div
@@ -209,6 +222,7 @@ const Code = () => {
               extensions={[
                 selectedLanguages,
                 styleTheme,
+                fontStyle,
                 EditorView.lineWrapping,
               ]}
               basicSetup={{

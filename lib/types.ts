@@ -25,3 +25,9 @@ export type LanguageDefinition = {
   icon: IconType;
   extension: () => Promise<Extension>;
 };
+
+export type FontsDefinition = {
+  id: string;
+  label: string;
+  value: string;
+};

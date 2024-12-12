@@ -188,7 +188,6 @@ const Code = () => {
         "bg-gradient-to-br",
         theme.class,
         font.value,
-        "transition-all duration-200 ease-in-out",
         "shadow-colorful"
       )}
     >

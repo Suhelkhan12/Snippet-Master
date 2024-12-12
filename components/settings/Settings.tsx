@@ -113,7 +113,7 @@ const Settings = () => {
       dragConstraints={constraints}
       animate={animationControls}
       className={cn(
-        "fixed bottom-10 max-w-4xl  w-full x-10 rounded-xl p-8 text-xm",
+        "fixed left-10 top-6 max-w-xs  w-full x-10 rounded-xl p-5 text-xm",
         "transition-opacity duration-300 ease-in-out will-change-transform",
         "border-[1px] border-white/20 text-white bg-black opacity-50 shadow-xl",
         "focus-within:opacity-100 hover:opacity-100"
@@ -130,7 +130,7 @@ const Settings = () => {
       >
         <MdDragIndicator />
       </div>
-      <div className="w-full flex items-start justify-between">
+      <div className="w-full flex flex-col gap-6 items-start justify-between">
         <div className="flex flex-col gap-2">
           <label htmlFor="language">Language</label>
           <Select

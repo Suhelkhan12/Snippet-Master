@@ -109,10 +109,10 @@ export default memo(function Select<
         />
       </ListboxButton>
       <ListboxOptions
-        anchor="bottom"
+        anchor="bottom start"
         transition
         className={cn(
-          " w-[20rem] rounded-md border border-white/20 bg-black p-2 focus:outline-none grid grid-cols-2 gap-2 shadow-md ",
+          " w-[20rem] mt-2 rounded-md border border-white/20 bg-black p-2 focus:outline-none grid grid-cols-2 gap-2 shadow-md ",
           "transition duration-100 ease-in data-[leave]:data-[closed]:opacity-0",
           "scrollbar-thin scrollbar-track-transparent"
         )}
